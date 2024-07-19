@@ -101,6 +101,102 @@ const OrderTable = () => {
 - Rendering an instance of OrderTable in App 
 
 
+## Get dummyData from resources
+Create a new folder in src called data. 
+In data, create a js file called dummyData.
+We will use this data to simulate some of the functions of the back end before we build the proper REST calls to the backend.
+
+
+```
+// dummyOrders array:
+// resembles what we would get from the backend with a GET request to /stocks
+// Starts with 3 pre-loaded previous orders
+// is returned by the getDummyOrders function
+// is updated by the buyDummyStock function
+
+const dummyOrders = [
+  {
+    created: new Date(6, 5, 2024),
+    statusCode: "FILLED",
+    ticker: "AMZN",
+    type: "BUY",
+    quantity: 10,
+    price: 100.0,
+  },
+  {
+    created: new Date(4, 4, 2024),
+    statusCode: "FILLED",
+    ticker: "TSLA",
+    type: "BUY",
+    quantity: 5,
+    price: 240.0,
+  },
+  {
+    created: new Date(28, 1, 2024),
+    statusCode: "FILLED",
+    ticker: "AAPL",
+    type: "BUY",
+    quantity: 2,
+    price: 70.0,
+  },
+];
+
+// getDummyOrders function:
+// resembles the functionality of a GET request to /stocks
+// returns the dummyOrders array
+// Will be replaced by a call to our backend with the following features:
+// REQUEST TYPE: GET
+// REQUEST URL: */stocks
+// DATA SHAPE: array of objects with the correct keys ( created, statusCode, ticker, type, quantity, price)
+
+export const getDummyOrders = () => {
+  return dummyOrders;
+};
+
+// OVERIVIEW: List of stocks available to buy and their current prices.
+// would come from 3rd party.
+
+export const getDummyStocks = () => {
+  const dummyStocks = [
+    { ticker: "AMZN", price: 200.0 },
+    { ticker: "TSLA", price: 250.0 },
+    { ticker: "AAPL", price: 100.0 },
+  ];
+
+  return dummyStocks;
+};
+
+//OVERVIEW:
+// buyDummyStock will write a new transaction to the backend.
+// It currently recieves newTransID from React State, this parameter will be removed when we connect to back end.
+// it calls getDummyStocks to find the current price of the stock being purchased.
+//REQUEST URL: /stocks
+//REQUEST TYPE: POST
+//DATA SHAPE: order object with the correct keys ( created, statusCode, ticker, type, quantity, price)
+
+export const buyDummyStock = (ticker, quantity) => {
+  //find the current rpice of the chosen stock
+  const dummyStocks = getDummyStocks();
+  const stock = dummyStocks.find((stock) => stock.ticker === ticker);
+
+  const newDummyTransaction = {
+    created: new Date(),
+    statusCode: "PENDING",
+    ticker: ticker,
+    type: "BUY",
+    quantity: quantity,
+    price: stock.price,
+  };
+
+  dummyOrders.push(newDummyTransaction); // add the new transaction to the dummyOrders array. later we will change this to be a POST request to the backend
+
+  console.log(dummyOrders);
+  return newDummyTransaction;
+};
+
+
+```
+
 
 
 ## Add to OrderTable the table that will hold information about all the customer's stock orders
@@ -138,33 +234,12 @@ This is all basic HTML, the challenge comes from interpreting a very nested stru
 
 ```
 
-OrderTable Should look as follows:
 
-```
-const OrderTable = () => {
-  return (
-    <>
-      <p>test, Hi from OrderTable!</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Created</th>
-            <th> Status </th>
-            <th> Type</th>
-            <th> Ticker</th>
-            <th> Quantity</th>
-            <th> Price</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </>
-  );
-};
+Your browser might look something like this:
 
-export default OrderTable;
+![image](https://github.com/user-attachments/assets/d88f014d-ac3c-4c69-8847-f7634ed95d97)
 
-```
+
 
 
 
