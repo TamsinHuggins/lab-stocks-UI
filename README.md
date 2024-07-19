@@ -54,7 +54,7 @@ You will be provided with a link to click on to view the code running in the bro
 You should see the starter code running in the browser.
 
 
-## Clean up App and create a new component 
+## Clean up App and create OrderTable component
 
 Delete some code from src/App.jsx. Make it so the App returns just a <p> tag, and check that you can see this text appear in the browser.
 
@@ -73,6 +73,32 @@ export default App;
 
 ```
 
+Create components folder in src. Create a new OrderTable.jsx file in components that will hold the OrderTable Component
+
+![image](https://github.com/user-attachments/assets/115bb2fe-c135-49e0-a075-9c99aff4abe7)
+
+
+
+Create the OrderTable component in OrderTable.jsx
+
+```
+const OrderTable = () => {
+    return (
+        <div>
+            <h1>test, Hi from OrderTable!</h1>
+        </div>
+    )
+}
+
+
+
+```
+
+
+## CHALLENGE : Renter the OrderTable component in App.jsx so that test welcome from OrderTable appears in the browser. This will involve:
+- Exporting the OrderTable component
+- Importing the OrderTable component into App
+- Rendering an instance of OrderTable in App 
 
 
 
