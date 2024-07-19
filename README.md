@@ -51,6 +51,9 @@ You will be provided with a link to click on to view the code running in the bro
 ![image](https://github.com/user-attachments/assets/f797cd64-d802-43de-bcd0-9cc1cbb59187)
 
 
+You should see the starter code running in the browser
+
+![image](https://github.com/user-attachments/assets/a50eb182-8f66-4b1a-9172-7df980ace1a7)
 
 
 
