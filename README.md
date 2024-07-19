@@ -103,6 +103,24 @@ const OrderTable = () => {
 
 
 
+## 
 
+```
+<table className="OrderTable">
+ <thead>
+  <tr>
+   <th>Created</th>
+   <th> Status </th>
+   <th> Type</th>
+   <th> Ticker</th>
+   <th> Quantity</th>
+   <th> Price</th>
+ </tr>
+</thead>
+ <tbody>
+ </tbody>
+</table>
+
+```
 
 
