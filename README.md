@@ -103,11 +103,12 @@ const OrderTable = () => {
 
 ## Get dummyData from resources
 Create a new folder in src called data. 
-In data, create a js file called dummyData.
+In data, create a JavaScript file called dummyData.js
 We will use this data to simulate some of the functions of the back end before we build the proper REST calls to the backend.
 
 
 ```
+
 // dummyOrders array:
 // Resembles what the backend will return as data, when we make a GET request to /stocks
 // Starts with 3 pre-loaded previous orders
@@ -116,7 +117,7 @@ We will use this data to simulate some of the functions of the back end before w
 
 const dummyOrders = [
   {
-    created: new Date(6, 5, 2024),
+    created: "Thu Jun 06 2024 10:10:00",
     statusCode: "FILLED",
     ticker: "AMZN",
     type: "BUY",
@@ -124,7 +125,7 @@ const dummyOrders = [
     price: 100.0,
   },
   {
-    created: new Date(4, 4, 2024),
+    created: "Fri Jun 07 2024 10:30:00",
     statusCode: "FILLED",
     ticker: "TSLA",
     type: "BUY",
@@ -132,7 +133,7 @@ const dummyOrders = [
     price: 240.0,
   },
   {
-    created: new Date(28, 1, 2024),
+    created: "Sat Jun 08 2024 01:40:00",
     statusCode: "FILLED",
     ticker: "AAPL",
     type: "BUY",
@@ -178,9 +179,9 @@ export const buyDummyStock = (ticker, quantity) => {
   //find the current price of the chosen stock
   const dummyStocks = getDummyStocks();
   const stock = dummyStocks.find((stock) => stock.ticker === ticker);
-
+  const created = new Date();
   const newDummyOrder = {
-    created: new Date(),
+    created: created.toISOString(),
     statusCode: "PENDING",
     ticker: ticker,
     type: "BUY",
@@ -194,6 +195,33 @@ export const buyDummyStock = (ticker, quantity) => {
   return newDummyOrder;
 };
 
+
+```
+
+## Rendering data
+
+Pull in the dummy orders and render some of the information so that it appears on screen.
+
+
+```
+import { getDummyOrders } from "../data/dummyData";
+
+const OrderTable = () => {
+  // getDummyOrders function will be replaced by a function that makes a GET request to our backend
+  const dummyOrders = getDummyOrders();
+
+  return (
+    <>
+      <h1>Orders History</h1>
+      <h2>Your Recent Order of {dummyOrders[0].ticker} </h2>
+      <p>
+        Price: {dummyOrders[0].price}, Quantity: {dummyOrders[0].quantity}
+      </p>
+    </>
+  );
+};
+
+export default OrderTable;
 
 ```
 
@@ -236,10 +264,93 @@ This is all basic HTML, the challenge comes from interpreting a very nested stru
 
 
 Your browser might look something like this:
+![image](https://github.com/user-attachments/assets/0989533c-275a-47de-9304-f5d62bf27456)
 
-![image](https://github.com/user-attachments/assets/d88f014d-ac3c-4c69-8847-f7634ed95d97)
+
+## Challenge: Add one order to the table as a row.
+
+Your table App should look something like this:
+
+![image](https://github.com/user-attachments/assets/03fc3eb1-fe5a-44ba-9f08-69966553cabc)
 
 
+## Understanding Nested Components
+
+Remember that components in React are reusable and customizable.
+
+We can make a React component called OrderTableRow, and render it into OrderTable as many times as desired, e.g.:
+
+```
+        <tbody>
+          <OrderTableRow order={firstRow} />
+          <OrderTableRow order={secondRow} />
+        </tbody>
+
+```
+
+
+### Create an OrderTableRow component 
+
+Create OrderTableRow.jsx in components. 
+
+OrderTableRow will recieve a single order object through props and put the data into the right boxes/fields.
+
+```
+const OrderTableRow = (props) => {
+  return (
+    <tr>
+      <td>{props.order.created}</td>
+      <td>{props.order.statusCode}</td>
+      <td>{props.order.type}</td>
+      <td>{props.order.ticker}</td>
+      <td>{props.order.quantity}</td>
+      <td>{props.order.price}</td>
+    </tr>
+  );
+};
+export default OrderTableRow;
+
+```
+### Render orderTableRow into the table body
+
+```
+
+
+import { getDummyOrders } from "../../data/dummyData";
+import OrderTableRow from "./OrderTableRow";
+
+const OrderTable = () => {
+  // getDummyOrders function will be replaced by a function that makes a GET request to our backend
+  const dummyOrders = getDummyOrders();
+  const firstRow = dummyOrders[0];
+  console.log(firstRow);
+
+  return (
+    <>
+      <h1>Orders History</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Created</th>
+            <th> Status </th>
+            <th> Type</th>
+            <th> Ticker</th>
+            <th> Quantity</th>
+            <th> Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <OrderTableRow order={firstRow} />
+        </tbody>
+      </table>
+    </>
+  );
+};
+
+export default OrderTable;
+
+
+```
 
 
 
