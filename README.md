@@ -96,7 +96,7 @@ const OrderTable = () => {
 
 
 ## CHALLENGE : Renter the OrderTable component in App.jsx so that test welcome from OrderTable appears in the browser. This will involve:
-- Exporting the OrderTable component
+- Exporting the OrderTable component as default export
 - Importing the OrderTable component into App
 - Rendering an instance of OrderTable in App 
 
