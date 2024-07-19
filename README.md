@@ -109,7 +109,7 @@ We will use this data to simulate some of the functions of the back end before w
 
 ```
 // dummyOrders array:
-// resembles what we would get from the backend with a GET request to /stocks
+// Resembles what the backend will return as data, when we make a GET request to /stocks
 // Starts with 3 pre-loaded previous orders
 // is returned by the getDummyOrders function
 // is updated by the buyDummyStock function
@@ -147,14 +147,15 @@ const dummyOrders = [
 // Will be replaced by a call to our backend with the following features:
 // REQUEST TYPE: GET
 // REQUEST URL: */stocks
-// DATA SHAPE: array of objects with the correct keys ( created, statusCode, ticker, type, quantity, price)
+// RETURNS: array of order objects with the correct keys ( created, statusCode, ticker, type, quantity, price)
 
 export const getDummyOrders = () => {
   return dummyOrders;
 };
 
-// OVERIVIEW: List of stocks available to buy and their current prices.
-// would come from 3rd party.
+// getDummyStocks Function
+// resembles functionality of a call to a 3rd party stock price API
+// RETURNS: an array of objects with the current price of the stocks
 
 export const getDummyStocks = () => {
   const dummyStocks = [
@@ -166,20 +167,19 @@ export const getDummyStocks = () => {
   return dummyStocks;
 };
 
-//OVERVIEW:
-// buyDummyStock will write a new transaction to the backend.
-// It currently recieves newTransID from React State, this parameter will be removed when we connect to back end.
-// it calls getDummyStocks to find the current price of the stock being purchased.
-//REQUEST URL: /stocks
-//REQUEST TYPE: POST
-//DATA SHAPE: order object with the correct keys ( created, statusCode, ticker, type, quantity, price)
+// buyDummyStock function:
+// resembles the functionality of writing a new order to /stocks via a POST request
+// REQUEST URL: /stocks
+// REQUEST TYPE: POST
+// PARAMETERS: ticker, quantity
+// RETURNS: order object with the correct keys ( created, statusCode, ticker, type, quantity, price)
 
 export const buyDummyStock = (ticker, quantity) => {
-  //find the current rpice of the chosen stock
+  //find the current price of the chosen stock
   const dummyStocks = getDummyStocks();
   const stock = dummyStocks.find((stock) => stock.ticker === ticker);
 
-  const newDummyTransaction = {
+  const newDummyOrder = {
     created: new Date(),
     statusCode: "PENDING",
     ticker: ticker,
@@ -188,10 +188,10 @@ export const buyDummyStock = (ticker, quantity) => {
     price: stock.price,
   };
 
-  dummyOrders.push(newDummyTransaction); // add the new transaction to the dummyOrders array. later we will change this to be a POST request to the backend
+  dummyOrders.push(newDummyOrder);
 
   console.log(dummyOrders);
-  return newDummyTransaction;
+  return newDummyOrder;
 };
 
 
