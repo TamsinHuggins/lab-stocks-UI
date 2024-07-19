@@ -54,7 +54,7 @@ You will be provided with a link to click on to view the code running in the bro
 You should see the starter code running in the browser.
 
 
-## Clean up App and create OrderTable component
+## Clean up App 
 
 Delete some code from src/App.jsx. Make it so the App returns just a <p> tag, and check that you can see this text appear in the browser.
 
@@ -73,7 +73,9 @@ export default App;
 
 ```
 
-Create components folder in src. Create a new OrderTable folder in components. OrderTable.jsx file in the OrderTable that will hold the OrderTable Component.
+## Create OrderTable Folder and OrderTable Component
+
+Create components folder in src. Create a new OrderTable folder in components. Create OrderTable.jsx file in the OrderTable folder.
 
 ![image](https://github.com/user-attachments/assets/a211687b-937a-41ed-a7c8-749fc47e476d)
 
