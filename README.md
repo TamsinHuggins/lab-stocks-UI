@@ -282,8 +282,8 @@ We can make a React component called OrderTableRow, and render it into OrderTabl
 
 ```
         <tbody>
-          <OrderTableRow order={firstRow} />
-          <OrderTableRow order={secondRow} />
+          <OrderTableRow order={firstOrder} />
+          <OrderTableRow order={secondOrder} />
         </tbody>
 
 ```
@@ -315,15 +315,13 @@ export default OrderTableRow;
 
 ```
 
-
 import { getDummyOrders } from "../../data/dummyData";
 import OrderTableRow from "./OrderTableRow";
 
 const OrderTable = () => {
   // getDummyOrders function will be replaced by a function that makes a GET request to our backend
   const dummyOrders = getDummyOrders();
-  const firstRow = dummyOrders[0];
-  console.log(firstRow);
+  const firstOrder = dummyOrders[0];
 
   return (
     <>
@@ -340,7 +338,7 @@ const OrderTable = () => {
           </tr>
         </thead>
         <tbody>
-          <OrderTableRow order={firstRow} />
+          <OrderTableRow order={firstOrder} />
         </tbody>
       </table>
     </>
@@ -350,7 +348,63 @@ const OrderTable = () => {
 export default OrderTable;
 
 
+
 ```
 
 
+### Using Map
+
+We have saved ourselves from having to write loads of HTML, by creating a reusable table row component that will recieve an order and give back a row for that order.
+
+
+```
+        <tbody>
+          <OrderTableRow order={firstOrder} />
+          <OrderTableRow order={secondOrder} />
+          <OrderTableRow order={thirdOrder} />
+        </tbody>
+
+```
+
+The example code above would create 3 table rows for 3 orders.
+
+This code could cause us problems in the future, though. It's rendering data that is going to **change** over time.
+We need logic that says "for every order, add a row to the table"
+
+
+```
+import { getDummyOrders } from "../../data/dummyData";
+import OrderTableRow from "./OrderTableRow";
+
+const OrderTable = () => {
+  // getDummyOrders function will be replaced by a function that makes a GET request to our backend
+  const dummyOrders = getDummyOrders();
+
+  return (
+    <>
+      <h1>Orders History</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Created</th>
+            <th> Status </th>
+            <th> Type</th>
+            <th> Ticker</th>
+            <th> Quantity</th>
+            <th> Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {dummyOrders.map((order, index) => (
+            <OrderTableRow key={index} order={order} />
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+};
+
+export default OrderTable;
+
+```
 
