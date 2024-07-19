@@ -1,7 +1,7 @@
 ﻿# lab-stocks-UI
 
 
-## Create a New React App using Vite
+## Create a new React app using Vite
 
 - react-stocks-demo is chosen to be the name of the project for this demo.
 - Vite is a build tool for the project.
@@ -51,9 +51,31 @@ You will be provided with a link to click on to view the code running in the bro
 ![image](https://github.com/user-attachments/assets/f797cd64-d802-43de-bcd0-9cc1cbb59187)
 
 
-You should see the starter code running in the browser
+You should see the starter code running in the browser.
 
-![image](https://github.com/user-attachments/assets/a50eb182-8f66-4b1a-9172-7df980ace1a7)
+
+## Clean up App and create a new component 
+
+Delete some code from src/App.jsx. Make it so the App returns just a <p> tag, and check that you can see this text appear in the browser.
+
+```
+import "./App.css";
+
+function App() {
+  return (
+    <>
+      <p>test, hello from App</p>
+    </>
+  );
+}
+
+export default App;
+
+```
+
+
+
+
 
 
 
