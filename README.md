@@ -85,7 +85,7 @@ Create the OrderTable component in OrderTable.jsx
 const OrderTable = () => {
     return (
         <div>
-            <h1>test, Hi from OrderTable!</h1>
+            <p>test, Hi from OrderTable!</p>
         </div>
     )
 }
