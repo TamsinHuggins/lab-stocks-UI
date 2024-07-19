@@ -106,7 +106,7 @@ const OrderTable = () => {
 ## 
 
 ```
-<table className="OrderTable">
+<table>
  <thead>
   <tr>
    <th>Created</th>
