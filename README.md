@@ -352,7 +352,7 @@ export default OrderTable;
 ```
 
 
-### Using Map
+## Using Map
 
 We have saved ourselves from having to write loads of HTML, by creating a reusable table row component that will recieve an order and give back a row for that order.
 
@@ -407,4 +407,16 @@ const OrderTable = () => {
 export default OrderTable;
 
 ```
+
+## A Buy component!
+
+### Create a new file called PurchaseStock.jsx for the a new PurchaseStock component.
+
+### Move OrderTable and OrderTableRow into a folder called OrderTable
+
+
+![image](https://github.com/user-attachments/assets/268e29d1-3d7e-496d-b980-8f06dbaf0adb)
+
+
+
 
