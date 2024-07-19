@@ -108,9 +108,13 @@ const OrderTable = () => {
 This is all basic HTML, the challenge comes from interpreting a very nested structure 
 
 - table wraps around the entire table
-   - th wraps around a table header
--      <tr></tr> wraps around a table row
-         - <th></th> holds one table header value
+   - thead wraps around a table header
+      - tr wraps around a table row
+         - th holds a single value in the table header
+
+   - tbody wreps around the table body
+     - tr wraps around a table row 
+        - td will hold a single value in the table body
 
 
 
