@@ -105,6 +105,8 @@ const OrderTable = () => {
 
 ## Add to OrderTable the table that will hold information about all the customer's stock orders
 
+### Copy the basic HTML for a table with the appropreate headers into the OrderTable component
+
 This is all basic HTML, the challenge comes from interpreting a very nested structure 
 
 - table wraps around the entire table
@@ -113,7 +115,7 @@ This is all basic HTML, the challenge comes from interpreting a very nested stru
          - th holds a single value in the table header
 
    - tbody wreps around the table body
-     - tr wraps around a table row 
+     - tr will wrap around a table row 
         - td will hold a single value in the table body
 
 
@@ -135,5 +137,34 @@ This is all basic HTML, the challenge comes from interpreting a very nested stru
 </table>
 
 ```
+
+OrderTable Should look as follows:
+
+```
+const OrderTable = () => {
+  return (
+    <>
+      <p>test, Hi from OrderTable!</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Created</th>
+            <th> Status </th>
+            <th> Type</th>
+            <th> Ticker</th>
+            <th> Quantity</th>
+            <th> Price</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </>
+  );
+};
+
+export default OrderTable;
+
+```
+
 
 
