@@ -73,9 +73,9 @@ export default App;
 
 ```
 
-Create components folder in src. Create a new OrderTable.jsx file in components that will hold the OrderTable Component
+Create components folder in src. Create a new OrderTable folder in components. OrderTable.jsx file in the OrderTable that will hold the OrderTable Component.
 
-![image](https://github.com/user-attachments/assets/115bb2fe-c135-49e0-a075-9c99aff4abe7)
+![image](https://github.com/user-attachments/assets/a211687b-937a-41ed-a7c8-749fc47e476d)
 
 
 
@@ -95,7 +95,7 @@ const OrderTable = () => {
 ```
 
 
-## CHALLENGE : Renter the OrderTable component in App.jsx so that test welcome from OrderTable appears in the browser. This will involve:
+## CHALLENGE : Render the OrderTable component in App.jsx so that test welcome from OrderTable appears in the browser. This will involve:
 - Exporting the OrderTable component as default export
 - Importing the OrderTable component into App
 - Rendering an instance of OrderTable in App 
@@ -204,7 +204,7 @@ Pull in the dummy orders and render some of the information so that it appears o
 
 
 ```
-import { getDummyOrders } from "../data/dummyData";
+import { getDummyOrders } from "../../data/dummyData";
 
 const OrderTable = () => {
   // getDummyOrders function will be replaced by a function that makes a GET request to our backend
@@ -411,8 +411,6 @@ export default OrderTable;
 ## A Buy component!
 
 ### Create a new file called PurchaseStock.jsx for the a new PurchaseStock component.
-
-### Move OrderTable and OrderTableRow into a folder called OrderTable
 
 
 ![image](https://github.com/user-attachments/assets/268e29d1-3d7e-496d-b980-8f06dbaf0adb)
