@@ -103,102 +103,11 @@ const OrderTable = () => {
 - Rendering an instance of OrderTable in App 
 
 
-## Get dummyData from resources
-Create a new folder in src called data. 
-In data, create a JavaScript file called dummyData.js
-We will use this data to simulate some of the functions of the back end before we build the proper REST calls to the backend.
+## Add dummyData.js to the project
+- Create a new folder in src called data.
+- Download dummyData.js from course site and place it inside data folder
+- We will use this data to simulate some of the functions of the back end before we build the proper REST calls to the backend.
 
-
-```
-
-// dummyOrders array:
-// Resembles what the backend will return as data, when we make a GET request to /stocks
-// Starts with 3 pre-loaded previous orders
-// is returned by the getDummyOrders function
-// is updated by the buyDummyStock function
-
-const dummyOrders = [
-  {
-    created: "Thu Jun 06 2024 10:10:00",
-    statusCode: "FILLED",
-    ticker: "AMZN",
-    type: "BUY",
-    quantity: 10,
-    price: 100.0,
-  },
-  {
-    created: "Fri Jun 07 2024 10:30:00",
-    statusCode: "FILLED",
-    ticker: "TSLA",
-    type: "BUY",
-    quantity: 5,
-    price: 240.0,
-  },
-  {
-    created: "Sat Jun 08 2024 01:40:00",
-    statusCode: "FILLED",
-    ticker: "AAPL",
-    type: "BUY",
-    quantity: 2,
-    price: 70.0,
-  },
-];
-
-// getDummyOrders function:
-// resembles the functionality of a GET request to /stocks
-// returns the dummyOrders array
-// Will be replaced by a call to our backend with the following features:
-// REQUEST TYPE: GET
-// REQUEST URL: */stocks
-// RETURNS: array of order objects with the correct keys ( created, statusCode, ticker, type, quantity, price)
-
-export const getDummyOrders = () => {
-  return dummyOrders;
-};
-
-// getDummyStocks Function
-// resembles functionality of a call to a 3rd party stock price API
-// RETURNS: an array of objects with the current price of the stocks
-
-export const getDummyStocks = () => {
-  const dummyStocks = [
-    { ticker: "AMZN", price: 200.0 },
-    { ticker: "TSLA", price: 250.0 },
-    { ticker: "AAPL", price: 100.0 },
-  ];
-
-  return dummyStocks;
-};
-
-// buyDummyStock function:
-// resembles the functionality of writing a new order to /stocks via a POST request
-// REQUEST URL: /stocks
-// REQUEST TYPE: POST
-// PARAMETERS: ticker, quantity
-// RETURNS: order object with the correct keys ( created, statusCode, ticker, type, quantity, price)
-
-export const buyDummyStock = (ticker, quantity) => {
-  //find the current price of the chosen stock
-  const dummyStocks = getDummyStocks();
-  const stock = dummyStocks.find((stock) => stock.ticker === ticker);
-  const created = new Date();
-  const newDummyOrder = {
-    created: created.toISOString(),
-    statusCode: "PENDING",
-    ticker: ticker,
-    type: "BUY",
-    quantity: quantity,
-    price: stock.price,
-  };
-
-  dummyOrders.push(newDummyOrder);
-
-  console.log(dummyOrders);
-  return newDummyOrder;
-};
-
-
-```
 
 ## Rendering data
 
@@ -240,7 +149,7 @@ This is all basic HTML, the challenge comes from interpreting a very nested stru
       - tr wraps around a table row
          - th holds a single value in the table header
 
-   - tbody wreps around the table body
+   - tbody wraps around the table body
      - tr will wrap around a table row 
         - td will hold a single value in the table body
 
@@ -415,12 +324,13 @@ export default OrderTable;
 ### Challenge: Create a component called PurchaseStock that will eventually have the functionality to buy a stock.
 
 Create a new file called PurchaseStock.jsx for the a new PurchaseStock component.
-Have PurchaseStock return something basic like <p> hello from PurchaseStock</p>
-Build up something that looks like the following image. The button does not need to work yet!
-
-### CH
 
 ![image](https://github.com/user-attachments/assets/268e29d1-3d7e-496d-b980-8f06dbaf0adb)
+Have PurchaseStock return something basic like \<p\> hello from PurchaseStock\</p\>
+Build up something that looks like the following image. The button does not need to work yet!
+
+
+
 
 
 
