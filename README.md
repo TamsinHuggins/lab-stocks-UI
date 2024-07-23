@@ -412,8 +412,13 @@ export default OrderTable;
 
 ## A Buy component!
 
-### Create a new file called PurchaseStock.jsx for the a new PurchaseStock component.
+### Challenge: Create a component called PurchaseStock that will eventually have the functionality to buy a stock.
 
+Create a new file called PurchaseStock.jsx for the a new PurchaseStock component.
+Have PurchaseStock return something basic like <p> hello from PurchaseStock</p>
+Build up something that looks like the following image. The button does not need to work yet!
+
+### CH
 
 ![image](https://github.com/user-attachments/assets/268e29d1-3d7e-496d-b980-8f06dbaf0adb)
 
